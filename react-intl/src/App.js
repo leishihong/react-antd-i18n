@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { IntlProvider, FormattedMessage } from 'react-intl';
 
+import locale from './locale/index';
+
+console.log(locale);
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <IntlProvider
+        locale={locale.locale[locale.locale.lang]}
+        messages={locale.messages}
+      >
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <FormattedMessage id="welcome" />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </IntlProvider>
     </div>
   );
 }
